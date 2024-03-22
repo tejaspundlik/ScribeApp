@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { Title, Card, Paragraph } from 'react-native-paper';
-import { EmailContext } from '../EmailContext';
+import { AuthContext } from '../AuthContext';
 
 const DocumentScreen = () => {
     const [documents, setDocuments] = useState([]);
-    const { email } = useContext(EmailContext);
+    const { userEmail } = useContext(AuthContext);
     useEffect(() => {
         fetchDocuments();
     }, []);
@@ -18,7 +18,7 @@ const DocumentScreen = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email
+                    email: "tp@gmail.com"
                 }),
             });
             const data = await response.json();

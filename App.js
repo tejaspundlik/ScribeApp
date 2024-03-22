@@ -22,6 +22,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider value={authContext}>
+
       <NavigationContainer>
         {isAuthenticated ? (
           <AppTabs />
@@ -29,6 +30,7 @@ const App = () => {
           <AuthStack />
         )}
       </NavigationContainer>
+
     </AuthContext.Provider>
   );
 };
