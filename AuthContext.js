@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
     }, [userEmail]);
 
     const signIn = (email) => {
-        setUserEmail(email);
         setIsAuthenticated(true);
+        setUserEmail(email);
     };
 
     const signOut = () => {

@@ -7,10 +7,10 @@ const DocumentScreen = () => {
     const [documents, setDocuments] = useState([]);
     const { userEmail } = useContext(AuthContext);
     useEffect(() => {
-        fetchDocuments();
-    }, []);
+        fetchDocuments(userEmail);
+    }, [userEmail]);
 
-    const fetchDocuments = async () => {
+    const fetchDocuments = async (email) => {
         try {
             const response = await fetch('http://192.168.0.117:3000/document/get', {
                 method: 'POST',
@@ -18,7 +18,7 @@ const DocumentScreen = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: "tp@gmail.com"
+                    email: email
                 }),
             });
             const data = await response.json();
