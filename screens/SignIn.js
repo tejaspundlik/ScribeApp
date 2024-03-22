@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
 import { Button, TextInput, Text } from 'react-native-paper';
 import { AuthContext } from '../AuthContext';
-
+import { EmailContext } from '../EmailContext';
 const SignInScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,6 +24,7 @@ const SignInScreen = ({ navigation }) => {
             const data = await response.json();
 
             if (response.ok) {
+                // const { email, updateEmail } = useContext(EmailContext);
                 signIn();
             } else {
                 Alert.alert('Error', data.error);
@@ -42,7 +43,7 @@ const SignInScreen = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={styles.title}>Sign In</Text>
             <TextInput
-                label="Username"
+                label="Email"
                 value={email}
                 onChangeText={setEmail}
                 style={styles.input}

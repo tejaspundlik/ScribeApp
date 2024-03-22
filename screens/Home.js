@@ -31,25 +31,23 @@ const Home = () => {
     }
 
     const uploadImage = async () => {
-        setUploading(true)
-        const formData = new FormData()
-        formData.append('image', image)
-        console.log(image)
+        setUploading(true);
         try {
-            const response = await fetch('https://your-server.com/upload', {
+            const base64Image = image;
+            const formData = new FormData();
+            formData.append('image', base64Image);
+            const response = await fetch('http://192.168.0.117:3000/model/conv', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ image: image }),
-            })
-            console.log('Image uploaded successfully:', response.data)
+                body: formData,
+            });
+            console.log('Server response:', response.status);
         } catch (error) {
-            console.error('Error uploading image:', error)
+            console.error('Error uploading image:', error);
         } finally {
-            setUploading(false)
+            setUploading(false);
         }
     }
+
 
     const imageToBase64 = async (uri) => {
         let base64Image = null

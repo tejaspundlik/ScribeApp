@@ -7,7 +7,7 @@ import { AuthContext } from './AuthContext'
 import SignInScreen from './screens/SignIn';
 import RegisterScreen from './screens/Register';
 import HomeScreen from './screens/Home';
-import OtherScreen from './screens/Other';
+import FileScreen from './screens/File';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,7 +51,7 @@ const AppTabs = () => (
     }}
   >
     <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Other" component={OtherScreen} />
+    <Tab.Screen name="File" component={FileScreen} />
   </Tab.Navigator>
 );
 
